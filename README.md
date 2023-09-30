@@ -3,3 +3,6 @@ A collection of small projects I made to learn Java.
 
 ## Temperature Converter
 Quick temperature converter between Celsius, Fahrenheit and Kelvin units.
+
+## Number Guesser
+Choose a range for the number and try to guess it.
