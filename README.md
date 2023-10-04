@@ -12,3 +12,6 @@ A simple terminal to-do list app. You can add and remove tasks, mark them as com
 
 ## Student Grade Tracker
 Add/remove students, view student list, add/remove grades, view grade list and calculate a student's average grade.
+
+## Morse Code Translator
+Translate text to morse code and vice-versa.
