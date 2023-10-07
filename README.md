@@ -15,3 +15,6 @@ Add/remove students, view student list, add/remove grades, view grade list and c
 
 ## Morse Code Translator
 Translate text to morse code and vice-versa.
+
+## Reminder app
+A simple calendar/reminder app allowing you to add and delete reminders, view your reminder list and edit a specific reminder.
