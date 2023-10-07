@@ -54,5 +54,14 @@ public class Reminder {
     public void setTime(LocalTime newTime) {
         this.time = newTime;
     }
+
+    @Override
+    public String toString() {
+        return "Reminder ID: " + id + 
+               "\nTitle: " + title + 
+               "\nDescription: " + description + 
+               "\nDate: " + date + 
+               "\nTime: " + time + "\n";
+    }
     
 }
