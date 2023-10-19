@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class Library {
 
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
+    private int nextId = 1;
 
     public void addBook(String title,String author,String isbn,boolean available) {
         available = true;
@@ -30,9 +32,6 @@ public class Library {
     }
 
     public void searchBook(String choice) {
-        System.out.println("1. Search by title");
-        System.out.println("2. Search by author");
-        System.out.println("3. Cancel");
         switch(choice) {
             case "1":
                 System.out.println("Enter book title:");
@@ -55,22 +54,80 @@ public class Library {
                 break;
             default:
                 System.out.println("Invalid choice. Please select a valid option.");
+                System.out.println("Insert the number correspoding to your desired option.");
         }
     }
    
     public void viewBooks() {
         System.out.println("Here are all books in our inventory:");
         System.out.println();
-        System.out.println(books);
+        for(Book book : books) {
+            System.out.println(book.toString());
+        }
     }
 
-    private Book getBookByTitle(String title) {
+    public Book getBookByTitle(String title) {
         for(Book book : books) {
-            if(book.getTitle().equals(title)) {
+            if(book.getTitle().equalsIgnoreCase(title)) {
                 return book;
             }
         }
         return null;
+    }
+
+    public void registerUser(String name) {
+        if(name == null || name.isEmpty()) {
+            System.out.println("Error: user name cannot be empty.");
+            return;
+        }
+        String formattedId = generateNextUserId();
+        User user = new User(name, formattedId);
+        if(users.add(user)) {
+            System.out.println("User registration successful. User ID:" + formattedId);
+            System.out.println();
+            incrementNextUserId();
+        } else {
+            System.out.println("Error: user registration failed. Try again.");
+            System.out.println();
+        }
+        
+    }
+
+    public User getUserById(String id) {
+        for(User user : users) {
+            if(user.getId().equals(id)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public void getBorrowedBooksById(Library library,String id) {
+        User user = getUserById(id);
+        if(user != null) {
+            System.out.println(user.getName()+"'s borrowed books:");
+            user.viewBorrowedBooks(library);
+        } else {
+            System.out.println("User with ID "+id+" couldn't be found.");
+            System.out.println();
+        }
+    }
+
+    public String getNameById(String id) {
+        User user = getUserById(id);
+        if(user != null) {
+            return user.getName();
+        } else {
+            return "User not found.";
+        }
+    }
+
+    private String generateNextUserId() {
+        return String.format("%d", nextId);
+    }
+
+    private void incrementNextUserId() {
+        nextId++;
     }
 
     private List<Book> getBookByAuthor(String author) {
@@ -82,4 +139,5 @@ public class Library {
         }
         return booksByAuthor;
     }
+
 }

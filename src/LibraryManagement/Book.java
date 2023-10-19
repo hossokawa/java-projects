@@ -1,17 +1,25 @@
 package LibraryManagement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book {
 
     private String title;
     private String author;
     private String isbn;
     private boolean available;
+    private List<User> borrowers = new ArrayList<>();
 
     public Book(String title,String author,String isbn,boolean available) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.available = available;
+    }
+
+    public void addBorrower(User user) {
+        borrowers.add(user);
     }
 
     public String getTitle() {
@@ -49,9 +57,15 @@ public class Book {
     @Override
     public String toString() {
         return  "Title: " + getTitle() +
-                "Author: " + getAuthor() +
-                "ISBN: " + getIsbn() +
-                "Available: " + isAvailable();
+                "\nAuthor: " + getAuthor() +
+                "\nISBN: " + getIsbn() +
+                "\nAvailable: " + isAvailable() + "\n";
+    }
+
+    public String borrowedBooksToString() {
+        return  "Title: " + getTitle() +
+                "\nAuthor: " + getAuthor() +
+                "\nISBN: " + getIsbn() +"\n";
     }
 
 }

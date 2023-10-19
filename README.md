@@ -21,3 +21,6 @@ A simple calendar/reminder app allowing you to add and delete reminders, view yo
 
 ## Expense Tracker
 Add/remove expenses, display all expenses or all for a single category, clear expense list.
+
+## Library Management Software
+Manage an inventory of books, register users, borrow/return book and view an user's list of borrowed books.
