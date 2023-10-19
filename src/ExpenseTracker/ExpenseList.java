@@ -73,6 +73,7 @@ public class ExpenseList {
         }
         return expensesInCategory;
     }
+
     private Expense getExpenseByDescription(String description) {
         for(Expense expense : expenses) {
             if(expense.getDescription().equals(description)) {
